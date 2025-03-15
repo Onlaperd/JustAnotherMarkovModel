@@ -61,7 +61,7 @@ def sendQueryToBot(prompt: str, delay: float, limit: int):
 
 @bot.message_handler(func=lambda message: True)
 def handle_message(message):
-    if message.text == "$execute admin: Onlapus --savelogs":
+    if message.text == "$execute admin: default --savelogs":
         bot.stop_bot()
 
     user_input = message.text
