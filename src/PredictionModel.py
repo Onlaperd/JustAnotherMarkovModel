@@ -8,9 +8,9 @@ from PredictionModelFileStructure import PredictionModelFileStructure
 
 print("[INFO] initializing variables")
 
-model_path = "model-20.pkl"
-dataset_path = "Dataset.txt"
-train_depth = 20
+model_path = "model-20.pkl" # replace with your file
+dataset_path = "Dataset.txt" # replace with your dataset
+train_depth = 20 # contex depth, if needed more
 
 
 def preprocess_text(text: str) -> str:
@@ -40,7 +40,7 @@ def train(dataset: str, depth: int) -> dict:
             print(f"[INFO] progress {progress}/{max_progress}")
             try:
 
-                current_phrase = " ".join(word_list[j:j + i])  # ✅ Fix empty phrase issue
+                current_phrase = " ".join(word_list[j:j + i])
                 next_phrase = " ".join(word_list[j + 1:j + i + 1])
 
                 if current_phrase in computed_data:
@@ -59,7 +59,6 @@ def guess_next_phrase(phrase: str, word_dict: dict):
         return choice(word_dict[phrase])
     else:
         if len(phrase.split(" ")) == 1:
-            print("[INFO] shit, you better make better algorithm for handling unknown phrases")
             return "[FORCE-BREAKPOINT]"
         arrayed_phrase = phrase.split(" ")[1:]
         processed_text = arrayed_phrase[0]
